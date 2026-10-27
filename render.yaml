@@ -23,5 +23,5 @@ services:
         sync: false
       - key: DATABASE_URL_UNPOOLED
         sync: false
-      - key: TMDB_READ_ACCESS_TOKEN
+      - key: TMDB_API_KEY
         sync: false
