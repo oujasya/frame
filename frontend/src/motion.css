@@ -20,6 +20,6 @@ dialog[open]{animation:frame-dialog 200ms ease-out}dialog::backdrop{animation:fr
 @keyframes frame-notice{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
 @keyframes frame-exit{to{opacity:0;transform:translateY(-4px)}}
 @keyframes frame-shimmer{to{background-position:-220% 0}}
-@media(hover:none),(pointer:coarse){.movie-grid>article .save-button{opacity:1;transform:none}.poster-hover-hint{opacity:1}.rail-arrow{opacity:1}}
+@media(hover:none),(pointer:coarse){.movie-grid>article .save-button{opacity:1;transform:none}.poster-hover-hint{display:none}.rail-arrow{opacity:1}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rail-viewport{scroll-behavior:auto}.movie-grid>article:hover>.poster,.movie-grid>article:focus-within>.poster,.wall-frame:enabled:hover,button:enabled:active{transform:none!important}}
 
