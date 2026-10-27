@@ -1,5 +1,6 @@
 """Pip's server-only OpenAI conversation and read-only TMDB tools."""
 import json,os,time
+from .gemini import generate
 from datetime import date
 from typing import Literal
 import httpx
@@ -54,6 +55,7 @@ def details(movie):
             'runtime':movie.get('runtime')}
 
 def ai_call(payload,key,remaining):
+    if os.getenv('PIP_AI_PROVIDER','gemini')=='gemini':return generate(payload,key,remaining)
     try:
         response=httpx.post('https://api.openai.com/v1/responses',headers={'Authorization':'Bearer '+key,'Content-Type':'application/json'},json=payload,timeout=httpx.Timeout(min(remaining,28),connect=5))
     except httpx.HTTPError:raise Problem(502,'Pip could not reach its AI service. Please try again.')
@@ -65,10 +67,13 @@ def ai_call(payload,key,remaining):
 
 @endpoint('GET','POST')
 def chat(request):
-    key=os.getenv('OPENAI_API_KEY','').strip()
-    if request.method=='GET':return Response({'ready':bool(key),'provider':'OpenAI','history':'this chat session only'})
+    provider=os.getenv('PIP_AI_PROVIDER','gemini')
+    if provider not in ('gemini','openai'):raise Problem(503,'Pip’s AI provider is not configured correctly.')
+    label='Gemini' if provider=='gemini' else 'OpenAI'
+    key=os.getenv('GEMINI_API_KEY' if provider=='gemini' else 'OPENAI_API_KEY','').strip()
+    if request.method=='GET':return Response({'ready':bool(key),'provider':label,'history':'this chat session only'})
     data=parse(Conversation,request.data)
-    if not key:raise Problem(503,{'code':'PIP_NOT_CONFIGURED','message':'Pip’s AI is not connected yet. The site owner needs to add an OpenAI API key. Movie shortcuts still work.'})
+    if not key:raise Problem(503,{'code':'PIP_NOT_CONFIGURED','message':'Pip’s AI is not connected yet. The site owner needs to add the AI provider API key. Movie shortcuts still work.'})
     deadline=time.monotonic()+48
     context=None;cards={}
     if data.movie_id:
@@ -83,7 +88,7 @@ def chat(request):
     for turn in range(3):
         remaining=deadline-time.monotonic()
         if remaining<2:raise Problem(504,'Pip took too long to answer. Please try a shorter question.')
-        payload={'model':os.getenv('OPENAI_MODEL','gpt-5.4-mini'),'instructions':instructions,'input':inputs,'store':False,'max_output_tokens':1000,'tools':TOOLS,'parallel_tool_calls':False,'tool_choice':'none' if turn==2 else 'auto'}
+        payload={'model':os.getenv('GEMINI_MODEL','gemini-3.5-flash-lite') if provider=='gemini' else os.getenv('OPENAI_MODEL','gpt-5.4-mini'),'instructions':instructions,'input':inputs,'store':False,'max_output_tokens':1000,'tools':TOOLS,'parallel_tool_calls':False,'tool_choice':'none' if turn==2 else 'auto'}
         if payload['model'].startswith('gpt-5.4'):payload['reasoning']={'effort':'none'}
         result=ai_call(payload,key,remaining)
         output=result.get('output',[])
@@ -91,7 +96,7 @@ def chat(request):
         if not calls:
             text='\n\n'.join(part.get('text','') or part.get('refusal','') for item in output if item.get('type')=='message' for part in item.get('content',[]) if part.get('type') in ('output_text','refusal')).strip()
             if not text:raise Problem(502,'Pip did not finish its reply. Please try again.')
-            return Response({'reply':text,'movies':list(cards.values())[:4],'provider':'OpenAI'})
+            return Response({'reply':text,'movies':list(cards.values())[:4],'provider':label})
         inputs.extend(output)
         for call in calls:
             used_tools+=1

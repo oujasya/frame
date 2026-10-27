@@ -12,7 +12,7 @@ def answer(text='Hi! What have you been watching lately?'):
 class PipTests(SimpleTestCase):
     def setUp(self):
         cache.clear()
-        self.env=patch.dict(os.environ,{'OPENAI_API_KEY':'not-a-real-test-key','OPENAI_MODEL':'gpt-5.4-mini'});self.env.start();self.addCleanup(self.env.stop)
+        self.env=patch.dict(os.environ,{'PIP_AI_PROVIDER':'openai','OPENAI_API_KEY':'not-a-real-test-key','OPENAI_MODEL':'gpt-5.4-mini'});self.env.start();self.addCleanup(self.env.stop)
         self.c=APIClient(enforce_csrf_checks=True)
         token=self.c.get('/api/csrf').json()['csrf_token']
         self.c.credentials(HTTP_X_CSRFTOKEN=token,HTTP_ORIGIN='http://localhost:5173')
