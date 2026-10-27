@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 from core.frontend import homepage
+from core.pip_ai import chat as pip_chat
 from core import accounts_views as a,movies as m,journal_views as j,lists_views as l,social_views as s,profiles_views as p
 urlpatterns=[
  path('',homepage),
+ path('api/pip/chat',pip_chat),
  path('admin/',admin.site.urls),
  path('api/csrf',a.csrf),path('api/health',m.health),
  path('api/auth/signup',a.signup),path('api/auth/login',a.login),path('api/auth/logout',a.logout),path('api/auth/me',a.me),
