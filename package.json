@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@neon/config": "^1.9.4",
+    "@neon/env": "^1.6.5"
+  },
+  "name": "frame",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev",
+    "neon:deploy": "neon deploy"
+  }
+}

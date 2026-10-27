@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+data/
+
+staticfiles/
+*.sqlite3
+.neon
+.env.local

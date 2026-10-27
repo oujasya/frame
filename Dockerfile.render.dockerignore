@@ -1,0 +1,17 @@
+.git
+.neon
+**/.env
+**/.env.*
+**/data
+**/node_modules
+**/dist
+**/.venv
+**/__pycache__
+**/*.pyc
+backend/staticfiles
+backend/legacy_fastapi
+**/*.db
+**/*.sqlite3
+**/*.dump
+work
+*.zip
