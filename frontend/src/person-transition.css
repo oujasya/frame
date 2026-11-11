@@ -1,0 +1,16 @@
+::view-transition-group(frame-person-badge){z-index:3;animation-duration:780ms;animation-timing-function:cubic-bezier(.22,.75,.22,1)}
+::view-transition-image-pair(frame-person-badge){isolation:isolate}
+::view-transition-old(frame-person-badge),::view-transition-new(frame-person-badge){height:100%;object-fit:fill;mix-blend-mode:normal}
+::view-transition-old(frame-person-badge){animation:badge-snapshot-out 600ms ease both}
+::view-transition-new(frame-person-badge){animation:badge-snapshot-in 650ms ease both}
+html[data-person-motion]::view-transition-old(root){animation:badge-page-out 240ms ease both}
+html[data-person-motion]::view-transition-new(root){animation:badge-page-in 600ms ease 120ms both}
+html[data-person-motion=close]::view-transition-group(frame-person-badge){animation-duration:650ms}
+html[data-person-motion] .person-badge{transition:none!important}
+html[data-person-motion] .badge-sheen{animation:none!important;opacity:0!important}
+@keyframes badge-snapshot-out{0%,30%{opacity:1}100%{opacity:0}}
+@keyframes badge-snapshot-in{0%,15%{opacity:0}100%{opacity:1}}
+@keyframes badge-page-out{to{opacity:0}}
+@keyframes badge-page-in{from{opacity:0}to{opacity:1}}
+@media(max-width:700px){::view-transition-group(frame-person-badge){animation-duration:640ms}}
+@media(prefers-reduced-motion:reduce){::view-transition-group(frame-person-badge),::view-transition-old(frame-person-badge),::view-transition-new(frame-person-badge),html[data-person-motion]::view-transition-old(root),html[data-person-motion]::view-transition-new(root){animation-duration:0s!important;animation-delay:0s!important}}

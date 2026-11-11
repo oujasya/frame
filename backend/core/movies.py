@@ -92,3 +92,15 @@ def artwork(request,size,filename):
         if not response.headers.get('content-type','').startswith('image/') or len(response.content)>5_000_000:raise Problem(502,'Poster unavailable.')
         return HttpResponse(response.content,content_type=response.headers['content-type'],headers={'Cache-Control':'public, max-age=86400'})
     except httpx.HTTPError:raise Problem(502,'TMDB poster unavailable. Please try again later.')
+
+@endpoint('GET')
+def person(request,person_id):
+    if person_id<1:raise Problem(422,'Invalid person ID.')
+    try:
+        data=tmdb(f'/person/{person_id}',append_to_response='movie_credits')
+    except Problem as error:
+        if error.status_code==404:raise Problem(404,'Person not found.')
+        raise
+    credits=data.get('movie_credits',{})
+    data['movie_credits']={key:[c for c in credits.get(key,[]) if not c.get('adult')] for key in ('cast','crew')}
+    return Response(data)

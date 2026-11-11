@@ -3,7 +3,7 @@ import {animate,installMotion} from './motion';
 export function Motion(){useEffect(()=>installMotion(document.getElementById('root')),[]);return null}
 export function AnimatedCollapse({open,children}){
  const [present,setPresent]=useState(open),container=useRef(null);
- useLayoutEffect(()=>{if(open&&!present){setPresent(true);return}const el=container.current;if(!el)return;el.inert=!open;const height=el.getBoundingClientRect().height;const a=animate(el,open?[{height:'0px',opacity:0,overflow:'hidden'},{height:`${height}px`,opacity:1,overflow:'hidden'}]:[{height:`${height}px`,opacity:1,overflow:'hidden'},{height:'0px',opacity:0,overflow:'hidden'}],{duration:200});if(!open){if(a)a.finished.then(()=>setPresent(false)).catch(()=>{});else setPresent(false)}return()=>a?.cancel()},[open,present]);
+ useLayoutEffect(()=>{if(open&&!present){setPresent(true);return}const el=container.current;if(!el)return;el.inert=!open;const a=animate(el,open?[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}]:[{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-8px)'}],{duration:500});if(!open){if(a)a.finished.then(()=>setPresent(false)).catch(()=>{});else setPresent(false)}return()=>a?.cancel()},[open,present]);
  return present?<div ref={container}>{children}</div>:null;
 }
 export function useListMotion(items){

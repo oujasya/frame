@@ -1,0 +1,253 @@
+/* FRAME: landing-page-design applied to the existing cinema application. */
+:root{
+ --font-ui:"Manrope",sans-serif;--motion-curve:cubic-bezier(.22,1,.36,1);--motion-layout:500ms;--motion-hover:300ms;
+ --surface:#f5f1e8;--surface-raised:#fcf9f1;--ink:#242424;--ink-muted:#6c655b;--action:#b84331;--line:#d6cdbd;
+ --spacing-0:0px;
+ --spacing-25:2px;
+ --spacing-50:4px;
+ --spacing-75:8px;
+ --spacing-100:12px;
+ --spacing-200:16px;
+ --spacing-300:24px;
+ --spacing-400:32px;
+ --spacing-500:40px;
+ --spacing-600:48px;
+ --spacing-700:64px;
+ --spacing-800:80px;
+ --spacing-900:96px;
+ --heading-1:600 60px/60px var(--font-ui);
+ --heading-2:600 48px/48px var(--font-ui);
+ --heading-3:600 36px/40px var(--font-ui);
+ --heading-4:600 30px/36px var(--font-ui);
+ --heading-5:600 24px/32px var(--font-ui);
+ --heading-6:600 20px/28px var(--font-ui);
+ --title-1:500 20px/28px var(--font-ui);
+ --title-2:500 18px/28px var(--font-ui);
+ --title-3:500 16px/24px var(--font-ui);
+ --title-4:500 14px/20px var(--font-ui);
+ --title-5:500 12px/16px var(--font-ui);
+ --body-1:600 16px/24px var(--font-ui);
+ --body-2:500 16px/24px var(--font-ui);
+ --body-3:400 16px/24px var(--font-ui);
+ --body-4:600 14px/20px var(--font-ui);
+ --body-5:500 14px/20px var(--font-ui);
+ --body-6:400 14px/20px var(--font-ui);
+ --button-lg:600 18px/28px var(--font-ui);
+ --button-md:600 16px/24px var(--font-ui);
+ --button-sm:600 14px/20px var(--font-ui);
+ --button-xsm:600 12px/16px var(--font-ui);
+ --caption-1:500 14px/20px var(--font-ui);
+ --caption-2:400 14px/20px var(--font-ui);
+ --caption-3:600 12px/16px var(--font-ui);
+ --caption-4:500 12px/16px var(--font-ui);
+ --caption-5:400 12px/16px var(--font-ui);
+}
+.heading-1{font:var(--heading-1)}
+.heading-2{font:var(--heading-2)}
+.heading-3{font:var(--heading-3)}
+.heading-4{font:var(--heading-4)}
+.heading-5{font:var(--heading-5)}
+.heading-6{font:var(--heading-6)}
+.title-1{font:var(--title-1)}
+.title-2{font:var(--title-2)}
+.title-3{font:var(--title-3)}
+.title-4{font:var(--title-4)}
+.title-5{font:var(--title-5)}
+.body-1{font:var(--body-1)}
+.body-2{font:var(--body-2)}
+.body-3{font:var(--body-3)}
+.body-4{font:var(--body-4)}
+.body-5{font:var(--body-5)}
+.body-6{font:var(--body-6)}
+.button-lg{font:var(--button-lg)}
+.button-md{font:var(--button-md)}
+.button-sm{font:var(--button-sm)}
+.button-xsm{font:var(--button-xsm)}
+.caption-1{font:var(--caption-1)}
+.caption-2{font:var(--caption-2)}
+.caption-3{font:var(--caption-3)}
+.caption-4{font:var(--caption-4)}
+.caption-5{font:var(--caption-5)}
+html{scroll-padding-top:var(--spacing-900)}
+body{font:var(--body-3);color:var(--ink);background-color:var(--surface);background-image:url('/textures/cinema-paper-v1.webp');background-size:640px}
+#root,#root *{font-family:var(--font-ui)!important;font-style:normal!important}
+#root *{transition-timing-function:var(--motion-curve)!important;animation-timing-function:var(--motion-curve)!important}
+#root p{text-wrap:pretty}#root :is(h1,h2,h3,h4,h5,h6){text-wrap:balance;text-transform:none;letter-spacing:-.02em}
+#root h1{font:var(--heading-1)}#root h2{font:var(--heading-2)}#root h3{font:var(--heading-5)}#root h4{font:var(--heading-6)}
+#root :is(p,li,dd){font:var(--body-3)}#root :is(label,dt){font:var(--title-4)}
+#root :is(button,input,select,textarea){font:var(--button-md)}
+#root :is(input,select,textarea){font-weight:400;border:1px solid var(--line);border-radius:8px;background:var(--surface-raised);color:var(--ink);padding:var(--spacing-75) var(--spacing-100)}
+#root button{font-weight:600;transition-property:transform,opacity!important;transition-duration:var(--motion-layout)!important}
+#root :is(.primary,.secondary){padding:var(--spacing-75) var(--spacing-100);min-height:40px;border-radius:8px;border:1px solid var(--line);background-image:none}
+#root .primary{background:var(--action);color:#fffaf2;border-color:var(--action)}
+#root .secondary{background-color:var(--surface-raised);color:var(--ink)}
+#root :is(a,button,input,select,textarea,summary):focus-visible{outline:2px solid var(--action);outline-offset:4px}
+#root :is(button,a.primary,a.secondary):active:not(:disabled){transform:scale(.98)}
+#root :is(button,input,select,textarea):disabled{opacity:.45;cursor:not-allowed}
+#root .text-button{font:var(--button-sm);min-height:32px}
+#root :is(.eyebrow,.section-label,.edition){font:var(--caption-4);letter-spacing:.08em;line-height:16px}
+#root .muted{color:var(--ink-muted)}
+#root .section{padding-block:var(--spacing-700);gap:var(--spacing-300)}
+#root .shell{width:min(1280px,calc(100% - var(--spacing-700)))}
+#main:not([data-motion-view=discover]){padding-top:var(--spacing-900)!important}
+#main[data-motion-view=discover]{padding-top:0!important}
+/* The flat UI sits over actual paper; material lighting belongs to the discs and sleeves. */
+#root :is(.movie-page,.person-page,.disc-journey,.disc-sticky){background-color:var(--surface);background-image:url('/textures/cinema-paper-v1.webp');background-size:640px;color:var(--ink)}
+#root :is(.movie-journal,.watch-providers,.movie-extras>section,.film-score-panel,.stats-card,.stats-panel,.review-entry,.diary-entry,.list-index-card,.person-paper,.collector-sleeve,.collector-note,.dvd-paper-insert,.settings-section,.pip-panel){background-color:var(--surface-raised)!important;background-image:url('/textures/cinema-paper-v1.webp')!important;background-size:640px;border:1px solid var(--line)!important;border-radius:8px!important;color:var(--ink)}
+#root :is(.review-entry,.diary-entry,.settings-section,.movie-extras>section,.watch-providers,.movie-journal){padding:var(--spacing-300)!important}
+#root .section-head{gap:var(--spacing-300);margin-bottom:var(--spacing-400)}
+#root .section-head h2{font:var(--heading-3);letter-spacing:-.02em}
+#root :is(.card-info h3,.card-info h3 button,.diary-title,.person-badge .badge-name strong){font:var(--title-2)!important;line-height:28px!important}
+#root :is(.card-info p,.score-note,.score-origin,.privacy-label,.rewatch-badge,.auth-field-hint,.people-deck-hint,.sleeve-edition,.sleeve-footer){font:var(--caption-5)!important;letter-spacing:0;line-height:16px!important}
+#root :is(.review-meta,.film-details-list dd,.movie-facts,.movie-synopsis,.person-biography,.collector-note-preview){font:var(--body-6)!important;line-height:20px!important}
+#root .journal-actions{gap:var(--spacing-100)}
+/* Content-sized floating masthead. */
+#root .frame-navbar,#root .frame-navbar[data-view=discover]{position:fixed;inset:var(--spacing-200) auto auto 50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - var(--spacing-400));border:1px solid #c9c0ae99;border-radius:16px;background:#f5f1e8ed;background-image:none;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 8px 24px #2424240a;z-index:300}
+#root .frame-navbar .navbar-inner,#root .frame-navbar[data-view=discover] .navbar-inner{width:auto;min-height:64px;padding:var(--spacing-75) var(--spacing-200);gap:var(--spacing-400);grid-template-columns:auto auto auto}
+#root .frame-navbar .navbar-brand,#root .frame-navbar[data-view=discover] .navbar-brand{font:var(--heading-5)!important;letter-spacing:-.04em;visibility:visible;padding:0;min-height:40px}
+#root .frame-navbar .navbar-navigation{grid-column:2;background:none;padding:0}
+#root .frame-navbar .navbar-links{gap:var(--spacing-200);border:0;background:none;padding:0}
+#root .frame-navbar .navbar-link{font:var(--title-4)!important;min-height:40px;padding:var(--spacing-75) 0!important;letter-spacing:0}
+#root .frame-navbar .navbar-account{grid-column:3;gap:var(--spacing-75)}
+#root .frame-navbar :is(.navbar-login,.navbar-join,.navbar-account-trigger){font:var(--button-sm);padding:var(--spacing-75) var(--spacing-100);min-height:40px;border-radius:8px}
+#root .frame-navbar .navbar-join{background:none;color:var(--ink);border:1px solid var(--line);box-shadow:none;gap:var(--spacing-75)}
+#root .frame-navbar .navbar-auth{gap:var(--spacing-75)}
+#root .frame-navbar .navbar-account-name{max-width:96px;font:var(--title-4)}
+#root .frame-navbar .navbar-count{font:var(--caption-3);min-width:24px;height:24px;border:1px solid var(--line);border-radius:8px}
+#root .navbar-account-panel{padding:var(--spacing-100);border:1px solid var(--line);border-radius:12px;background:var(--surface-raised);background-image:none;top:calc(100% + var(--spacing-100))}
+#root .navbar-account-panel :is(button,p){font:var(--body-6);line-height:20px}
+#root .navbar-account-panel button{padding:var(--spacing-100);min-height:48px}
+#root .navbar-ink path{transition-duration:500ms!important}
+/* One clear offer and one primary action around the selected film. */
+#root .disc-film-info{left:var(--spacing-400);top:calc(var(--spacing-800) + var(--spacing-400));width:min(320px,25vw)}
+#root .disc-film-info>.hero-message{display:block;border:0;padding:0;margin:0 0 var(--spacing-300);text-align:left}
+#root .hero-heading{font:var(--heading-1)!important;line-height:60px!important;letter-spacing:-.04em!important;max-width:680px;margin:0 0 var(--spacing-200);background:linear-gradient(90deg,#000,#666);background-clip:text;-webkit-background-clip:text;color:transparent}
+#root .hero-subheading{font:var(--body-6)!important;line-height:20px!important;max-width:680px;margin:0;text-align:left;color:var(--ink-muted)}
+#root .disc-film-info .hero-film-title{font:var(--title-1)!important;line-height:28px!important;letter-spacing:-.01em!important;margin:0 0 var(--spacing-75);color:var(--ink)}
+#root .disc-film-info>div:not(.hero-message):not(.disc-meta-actions){font:var(--caption-5);gap:var(--spacing-100)}
+#root .disc-film-info>div:not(.hero-message)>span,#root .disc-film-info>div:not(.hero-message)>p{font:var(--caption-5);line-height:16px!important;color:var(--ink-muted)}
+#root .disc-meta-actions{margin-top:var(--spacing-200);gap:var(--spacing-100)}
+#root .disc-meta-actions button{font:var(--button-md);min-height:40px;background:var(--action);border:1px solid var(--action);border-radius:8px;padding:var(--spacing-75) var(--spacing-100);color:#fffaf2}
+#root .disc-controls,#root .disc-controls button{font:var(--button-xsm);line-height:16px}
+#root .disc-controls{left:var(--spacing-400);right:var(--spacing-400);bottom:var(--spacing-200);gap:var(--spacing-200)}
+#root .disc-instructions{font:var(--caption-5);left:var(--spacing-400);bottom:var(--spacing-700);line-height:16px}
+#root .disc-print small{font:var(--caption-4);letter-spacing:.04em}#root .disc-print strong{font:var(--heading-5);line-height:32px}#root .disc-print em{font:var(--caption-5);line-height:16px}
+/* Consistent paper content, roomy typography, and full borders. */
+#root .movie-page .dvd-paper-insert{padding:var(--spacing-400)}
+#root .movie-page .movie-page-intro h1,#root .person-paper h1{font:var(--heading-1)!important;line-height:60px!important;letter-spacing:-.04em!important}
+#root .movie-page .movie-tagline{font:var(--body-3);line-height:24px}
+#root .movie-page .film-score-panel h2{font:var(--title-3)!important;line-height:24px!important}
+#root .movie-page .film-score-panel .film-score-value strong{font:var(--heading-3)!important;line-height:40px!important}
+#root :is(.badge-header>span,.badge-footer small){font:var(--caption-5)!important;line-height:16px!important;letter-spacing:0;max-width:96px}
+#root .badge-header b{font:var(--title-1)!important;letter-spacing:-.02em}
+#root .badge-header{gap:var(--spacing-100)}
+#root .badge-name>span{font:var(--body-6)!important;line-height:20px!important}
+#root .people-badge-grid{grid-template-columns:repeat(auto-fill,minmax(224px,1fr));gap:var(--spacing-300);padding-top:var(--spacing-300)}
+#root .person-badge-large .badge-name strong{font:var(--heading-5)!important;line-height:32px!important}
+#root .person-specialty{font:var(--title-2);line-height:28px}
+#root .people-section-switch{gap:var(--spacing-100);margin-block:var(--spacing-300) var(--spacing-100)}
+#root .movie-section-nav{gap:var(--spacing-100);padding-block:var(--spacing-200)}
+#root .movie-section-nav button{font:var(--button-sm);min-height:40px}
+#root .collector-sleeve{padding:var(--spacing-500) var(--spacing-500) var(--spacing-600);gap:var(--spacing-400);margin-bottom:var(--spacing-400);top:calc(var(--spacing-900) + var(--sleeve-index)*var(--spacing-200))}
+#root .sleeve-copy h3{font:var(--heading-3);line-height:40px;letter-spacing:-.02em;margin-block:var(--spacing-200)}
+#root .sleeve-copy p{font:var(--body-6);line-height:20px;margin-bottom:var(--spacing-300)}
+#root .sleeve-copy button{font:var(--button-sm)}
+#root .sleeve-footer{left:var(--spacing-500);bottom:var(--spacing-200)}
+#root .collector-note{padding:var(--spacing-200);margin-block:var(--spacing-200)}
+#root .collector-note-toggle{font:var(--button-sm);line-height:20px;min-height:40px}
+#root .tagline-reveal{padding-block:var(--spacing-900);position:relative}
+#root .tagline-heading{font:var(--heading-2);line-height:48px;max-width:680px;letter-spacing:-.03em;margin:0 auto}
+.tagline-line{display:block}.tagline-line+.tagline-line{margin-top:var(--spacing-200)}
+.tagline-word{display:inline-block;opacity:var(--word-opacity,.3);transition:opacity 500ms var(--motion-curve)}
+#root .footer{padding-block:var(--spacing-600);gap:var(--spacing-300);border:0}
+#root .footer :is(p,a){font:var(--caption-5);line-height:16px;max-width:680px}
+#root .footer .logo{font:var(--heading-5)}
+#root .auth-story{background:#181818;background-image:none;color:#f5f1e8}
+#root .auth-story :is(h2,p,span){color:#f5f1e8}
+#root .auth-story h2{font:var(--heading-2);line-height:48px}
+#root :is(.auth-form-side,.auth-form-wrap){background-color:var(--surface);background-image:none}
+#root .auth-form{gap:var(--spacing-100)}
+#root .auth-form input{min-height:48px}
+#root .auth-mode-switch{padding:var(--spacing-50);border:1px solid var(--line);border-radius:12px;background:var(--surface-raised)}
+#root .auth-mode-switch button{font:var(--button-sm);padding:var(--spacing-75) var(--spacing-100)}
+#root .auth-form-foot{font:var(--caption-5)}
+#root .search-row{padding-block:var(--spacing-300)}
+#root .pip-panel{border:1px solid var(--line);background-image:none!important}
+#root .pip-panel :is(p,button,input,textarea){font:var(--body-6)}
+/* Motion uses opacity and transforms; the requested ink strokes keep their draw animation. */
+#root .number-strip{transition:transform 500ms var(--motion-curve)}
+#root .changing-title-new{animation:frame-title-arrive 500ms var(--motion-curve) both}
+#root .changing-title-old{animation:frame-title-leave 500ms var(--motion-curve) both}
+@keyframes frame-title-arrive{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes frame-title-leave{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-16px)}}
+#root .disc-sticky:after{background-image:none}
+@media(max-width:1180px) and (min-width:701px){#root .hero-heading{font:var(--heading-2)!important;line-height:48px!important}#root .frame-navbar .navbar-inner{gap:var(--spacing-300)}}
+@media(max-width:960px){
+ #root .frame-navbar,#root .frame-navbar[data-view=discover]{width:calc(100% - var(--spacing-400));max-width:none}
+ #root .frame-navbar .navbar-inner,#root .frame-navbar[data-view=discover] .navbar-inner{width:100%;min-height:64px;grid-template-columns:1fr auto;gap:var(--spacing-200);box-sizing:border-box;padding:var(--spacing-75) var(--spacing-100)}
+ #root .frame-navbar .navbar-account,#root .frame-navbar[data-view=discover] .navbar-account{grid-column:2;grid-row:1;gap:var(--spacing-75)}
+ #root .frame-navbar .navbar-navigation,#root .frame-navbar[data-view=discover] .navbar-navigation{position:absolute;top:calc(100% + var(--spacing-75));left:0;right:0;height:calc(100svh - var(--spacing-900) - var(--spacing-200));max-height:none;overflow:auto;box-sizing:border-box;grid-column:auto;padding:var(--spacing-400) var(--spacing-300);border:1px solid var(--line);border-radius:16px;background:#f5f1e8fa;backdrop-filter:blur(24px);animation:frame-menu-arrive 500ms var(--motion-curve) both;box-shadow:0 16px 32px #24242414}
+ #root .frame-navbar .navbar-links{display:flex;flex-direction:column;align-items:stretch;gap:var(--spacing-200);width:100%;padding:0;background:none}
+ #root .frame-navbar .navbar-link{flex:none;justify-content:flex-start;align-items:center;flex-direction:row;min-height:64px;font:var(--heading-5)!important;line-height:32px!important;padding:var(--spacing-200)!important;animation:frame-menu-link 500ms var(--motion-curve) both}
+ #root .navbar-link:nth-of-type(2){animation-delay:60ms!important}#root .navbar-link:nth-of-type(3){animation-delay:120ms!important}#root .navbar-link:nth-of-type(4){animation-delay:180ms!important}#root .navbar-link:nth-of-type(5){animation-delay:240ms!important}
+ #root .frame-navbar .navbar-link .navbar-ink{left:var(--spacing-200);bottom:var(--spacing-75);width:96px}
+ #root .frame-navbar .navbar-menu-button{display:block;width:40px;height:40px;border:1px solid var(--line);border-radius:8px;background:var(--surface-raised)}
+ #root .navbar-menu-button span{left:var(--spacing-100);width:16px;top:var(--spacing-200);transition:transform 500ms var(--motion-curve)}
+ #root .navbar-menu-button span+span{top:var(--spacing-300);transform:translateY(-2px)}
+ #root .navbar-menu-button.is-open span{top:var(--spacing-200);transform:translateY(3px) rotate(45deg)}
+ #root .navbar-menu-button.is-open span+span{top:var(--spacing-200);transform:translateY(3px) rotate(-45deg)}
+ #root .frame-navbar .navbar-account-name{display:none}
+ #root .frame-navbar .navbar-count{position:static;margin-left:auto}
+}
+@keyframes frame-menu-arrive{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes frame-menu-link{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+ #root .shell{width:calc(100% - var(--spacing-400))}
+ #root .section{padding-block:var(--spacing-600)}
+ #root h1,#root .movie-page .movie-page-intro h1,#root .person-paper h1{font:var(--heading-3)!important;line-height:40px!important}
+ #root h2,#root .section-head h2{font:var(--heading-4);line-height:36px}
+ #root .frame-navbar :is(.navbar-login,.navbar-join){font:var(--button-xsm);padding:var(--spacing-75);gap:var(--spacing-75)}
+ #root .frame-navbar .navbar-brand{font:var(--heading-5)!important}
+ #root .disc-film-info{left:var(--spacing-200);top:calc(var(--spacing-800) + var(--spacing-400));width:calc(100% - var(--spacing-400));max-width:360px}
+ #root .hero-heading{font:var(--heading-3)!important;line-height:40px!important;margin-bottom:var(--spacing-75)}
+ #root .hero-subheading{font:var(--body-6)!important;line-height:20px!important;max-width:320px}
+ #root .disc-film-info>.hero-message{margin-bottom:var(--spacing-100)}
+ #root .disc-film-info .hero-film-title{font:var(--title-3)!important;line-height:24px!important;margin-bottom:var(--spacing-50)}
+ #root .disc-meta-actions{margin-top:var(--spacing-100)}
+ #root .disc-meta-actions button{font:var(--button-sm);min-height:40px}
+ #root .disc-position{top:65%}
+ #root .disc-controls{left:var(--spacing-200);right:var(--spacing-200);gap:var(--spacing-100)}
+ #root .disc-controls>div{gap:var(--spacing-100)}
+ #root .disc-controls button{font:var(--button-xsm);padding:var(--spacing-75) var(--spacing-50);min-height:32px}
+ #root .disc-instructions{left:var(--spacing-200);bottom:var(--spacing-700);font:var(--caption-5);max-width:calc(100% - var(--spacing-400))}
+ #root .disc-print strong{font:var(--title-2);line-height:28px}#root .disc-print small,#root .disc-print em{font:var(--caption-5);line-height:16px}
+ #root .movie-page .dvd-case{padding:var(--spacing-200);gap:var(--spacing-300)}
+ #root .movie-page .dvd-paper-insert{padding:var(--spacing-300) var(--spacing-200)}
+ #root :is(.review-entry,.diary-entry,.settings-section,.movie-extras>section,.watch-providers,.movie-journal){padding:var(--spacing-200)!important}
+ #root .person-dossier{gap:var(--spacing-400)}
+ #root .person-paper{padding:var(--spacing-300) var(--spacing-200)}
+ #root .collector-sleeve{padding:var(--spacing-300) var(--spacing-300) var(--spacing-600);gap:var(--spacing-200);top:calc(var(--spacing-900) + var(--sleeve-index)*var(--spacing-75))}
+ #root .sleeve-copy h3{font:var(--heading-4);line-height:36px}
+ #root .sleeve-footer{left:var(--spacing-300);bottom:var(--spacing-200);max-width:calc(100% - var(--spacing-600))}
+ #root .tagline-reveal{padding-block:var(--spacing-700)}
+ #root .tagline-heading{font:var(--heading-4);line-height:36px}
+ #root .badge-footer small{font:var(--caption-5)!important}
+ #root .footer{padding-block:var(--spacing-400);gap:var(--spacing-200)}
+}
+@media(max-height:760px) and (max-width:700px){#root .hero-heading{font:var(--heading-4)!important;line-height:36px!important}#root .hero-subheading{display:none}#root .disc-position{top:67%}}
+@media(prefers-reduced-motion:reduce){
+ #root *,#root *:before,#root *:after{animation:none!important;transition-property:opacity!important;transition-duration:300ms!important}
+ #root .tagline-word{opacity:1!important}
+ #root .navbar-link,#root .navbar-menu-button{animation:none!important}
+}
+#root .disc-loader{display:grid;grid-template-columns:minmax(240px,1fr) 1fr;gap:var(--spacing-400);align-items:center;justify-items:center;padding:var(--spacing-400);background:var(--surface)}
+.gallery-loading-copy{display:flex;flex-direction:column;gap:var(--spacing-200);width:100%;max-width:320px}.loading-line{height:16px;width:100%;border-radius:4px;background:#e3ddcf;animation:frame-loading-breathe 1000ms var(--motion-curve) infinite alternate}.loading-title{height:48px}.loading-short{width:64%}.gallery-loading-disc{width:min(38vw,440px);aspect-ratio:1;border-radius:50%;background:#e3ddcf;animation:frame-loading-breathe 1000ms var(--motion-curve) infinite alternate}
+@keyframes frame-loading-breathe{from{opacity:.4}to{opacity:.85}}
+#root .auth-loading-mark{width:16px;height:16px;border:0;border-radius:4px;background:currentColor;animation:frame-loading-breathe 1000ms var(--motion-curve) infinite alternate}
+@media(max-width:700px){#root .disc-loader{grid-template-columns:1fr;padding:var(--spacing-400) var(--spacing-200);align-content:center;gap:var(--spacing-600)}.gallery-loading-disc{width:64vw}.gallery-loading-copy{max-width:320px}}
+@media(prefers-reduced-motion:reduce){.loading-line,.gallery-loading-disc{animation:none!important;opacity:.65}}
+#root .badge-footer small{max-width:none!important;white-space:nowrap}
+#root .badge-stamp,#root .badge-security{font:var(--caption-5)!important;line-height:16px!important}
+#root .dvd-catalogue-sticker strong{font:var(--title-3)!important;line-height:24px!important}
+#root .dvd-catalogue-sticker small,#root .person-facts dt,#root .movie-genres li{font:var(--caption-5)!important;line-height:16px!important}
+#root .person-facts dd{font:var(--body-6)!important;line-height:20px!important}

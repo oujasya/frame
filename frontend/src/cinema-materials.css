@@ -1,0 +1,11 @@
+/* Projector dust and GPU material highlights are confined to the film objects. */
+.projector-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.8}
+.disc-scene{z-index:3}
+.disc-gpu-material{position:absolute;inset:0;display:block;pointer-events:none;z-index:2;border-radius:50%;overflow:hidden;isolation:isolate}
+.disc-gpu-material>canvas{display:block;width:100%;height:100%;pointer-events:none;border-radius:50%}
+.movie-disc-art>.movie-disc-centre{z-index:3}
+.disc-front>.disc-gpu-material{z-index:1}
+.disc-front>.disc-print{z-index:2}
+.disc-front>.disc-grooves{z-index:3}
+.disc-gpu-material[data-render-state=fallback],.disc-gpu-material[data-render-state=reduced]{display:none}
+@media(prefers-reduced-motion:reduce){.projector-dust,.disc-gpu-material{display:none!important}}

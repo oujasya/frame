@@ -1,0 +1,17 @@
+/* Layered PVC holder: paper insert, rounded solid edge, optical laminate. */
+.person-badge{padding:0!important;background:transparent;border:0;overflow:visible;isolation:auto;perspective:1000px;box-shadow:none!important;transform:none!important}
+.badge-solid{position:relative;display:flex;flex:1;min-width:0;width:100%;border-radius:10px;transform-style:preserve-3d;transform:rotateX(var(--badge-rx,0deg)) rotateY(var(--badge-ry,0deg));transition:filter .3s;filter:drop-shadow(3px 12px 10px #25372c25)}
+.badge-card-face{position:relative;display:flex;flex-direction:column;flex:1;min-width:0;padding:30px 14px 12px;border-radius:10px;overflow:hidden;transform:translateZ(3px);background:linear-gradient(135deg,#ffffff85,#b9c7bf35 40%,#fafff990),#d8e1db;border:1px solid #fafff9;box-shadow:inset 0 0 0 2px #ffffff95,inset 0 0 0 5px #8a9d902a,inset -2px -3px 3px #60796b30}
+.badge-card-face:before{content:'';position:absolute;inset:25px 8px 9px;border:1px solid #d5cfbe;border-radius:3px;background:linear-gradient(#faf7ed70,#faf7ed70),url('/textures/cinema-paper-v1.webp') center/360px;box-shadow:0 1px 2px #34423435;z-index:-1}
+.person-badge:before,.person-badge:after{display:none}
+.badge-card-back{position:absolute;inset:0;transform:translateZ(-3px);border-radius:10px;background:#b2c1b7;box-shadow:0 2px 0 #849b8c,0 5px 0 #91a598,0 6px 1px #627c6e,2px 12px 15px #263c3026}
+.badge-edge{position:absolute;inset:0;border-radius:10px;background:#bbcabe;transform:translateZ(0);box-shadow:0 1px #edf5ed,0 2px #7e9787,0 3px #c5d3c8,0 4px #839c8b}
+.badge-laminate{position:absolute;inset:0;z-index:8;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse at var(--badge-light-x,50%) var(--badge-light-y,50%),#ffffff45,transparent 58%),linear-gradient(112deg,transparent 12%,#fff3 12.2%,transparent 12.6%,transparent 79%,#fff5 79.3%,transparent 79.7%),repeating-linear-gradient(174deg,transparent 0 38px,#ffffff0b 38.4px,transparent 39px 83px);box-shadow:inset 1px 1px 1px #fff,inset -1px -2px 2px #6e87774d}
+.badge-card-face .badge-security{background:repeating-linear-gradient(125deg,#c6dca5b0 0 3px,#9bc8cc90 4px 7px,#e5c6aaa0 8px 11px);box-shadow:inset 0 0 0 2px #fff5,0 1px 1px #fff8}
+.badge-card-face .badge-portrait{box-shadow:0 1px 0 #fff,1px 3px 4px #28392d40;filter:contrast(1.02)}
+.person-badge-large .badge-card-face{padding:35px 20px 17px}
+.people-deck-card .badge-solid{height:100%}.people-deck-card .badge-card-face{box-sizing:border-box}
+@media(hover:hover) and (pointer:fine){.person-badge:hover .badge-solid{filter:drop-shadow(5px 19px 13px #25372c35)}.person-badge:hover .badge-sheen{animation:badge-light-pass 1100ms ease both}}
+@media(max-width:700px){.badge-card-face{padding:29px 10px 10px}}
+@media(prefers-reduced-motion:reduce){.badge-solid{transform:none!important;transition:none!important}.badge-sheen{display:none!important}}
+html[data-person-motion] .badge-solid{transform:none!important}

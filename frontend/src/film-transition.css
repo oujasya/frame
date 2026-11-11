@@ -1,0 +1,30 @@
+/* The disc keeps its identity while its position, size and perspective change. */
+::view-transition-group(frame-film-disc){animation-duration:720ms;animation-timing-function:cubic-bezier(.22,.75,.22,1);z-index:2}
+::view-transition-image-pair(frame-film-disc){isolation:isolate}
+::view-transition-old(frame-film-disc),::view-transition-new(frame-film-disc){height:100%;object-fit:fill;mix-blend-mode:normal;overflow:visible}
+::view-transition-old(frame-film-disc){animation:film-disc-dissolve 460ms ease both}
+::view-transition-new(frame-film-disc){animation:film-disc-arrive 520ms ease both}
+html[data-film-motion]::view-transition-old(root){animation:film-scene-out 230ms ease both}
+html[data-film-motion]::view-transition-new(root){animation:film-scene-in 550ms cubic-bezier(.22,.75,.22,1) 100ms both}
+html[data-film-motion=close]::view-transition-group(frame-film-disc){animation-duration:620ms}
+.frame-navbar{view-transition-name:frame-film-navigation}
+::view-transition-group(frame-film-navigation){animation-duration:250ms}
+.movie-page-intro>h1,.movie-page-intro>:is(.movie-facts,.movie-genres,.score-panels,.movie-synopsis){animation:none}
+.movie-page-backdrop{animation:film-backdrop-reveal 700ms ease both}
+@keyframes film-disc-dissolve{to{opacity:0}}
+@keyframes film-disc-arrive{from{opacity:0}to{opacity:1}}
+@keyframes film-scene-out{to{opacity:0}}
+@keyframes film-scene-in{from{opacity:0}to{opacity:1}}
+@keyframes film-backdrop-reveal{from{opacity:0}to{opacity:.3}}
+@media(max-width:700px){::view-transition-group(frame-film-disc){animation-duration:580ms}}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation-duration:0s!important;animation-delay:0s!important}.movie-page-backdrop{animation:none}}
+
+/* Only the perspective gallery uses a slower, gently accelerating flight. */
+html[data-film-origin=gallery]::view-transition-group(frame-film-disc){animation-duration:840ms;animation-timing-function:cubic-bezier(.3,0,.2,1)}
+html[data-film-origin=gallery]::view-transition-old(frame-film-disc){animation:gallery-disc-out 680ms cubic-bezier(.3,0,.2,1) both}
+html[data-film-origin=gallery]::view-transition-new(frame-film-disc){animation:gallery-disc-in 680ms cubic-bezier(.3,0,.2,1) both}
+html[data-film-origin=gallery]::view-transition-new(root){animation:film-scene-in 620ms ease 160ms both}
+@keyframes gallery-disc-out{0%,45%{opacity:1}85%,100%{opacity:0}}
+@keyframes gallery-disc-in{0%,40%{opacity:0}85%,100%{opacity:1}}
+@media(max-width:700px){html[data-film-origin=gallery]::view-transition-group(frame-film-disc){animation-duration:700ms}}
+@media(prefers-reduced-motion:reduce){html[data-film-origin=gallery]::view-transition-group(frame-film-disc),html[data-film-origin=gallery]::view-transition-old(frame-film-disc),html[data-film-origin=gallery]::view-transition-new(frame-film-disc),html[data-film-origin=gallery]::view-transition-new(root){animation-duration:0s!important;animation-delay:0s!important}}

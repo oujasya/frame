@@ -1,0 +1,103 @@
+/* One disc treatment at every size, from the library to compact search results. */
+
+:root{--disc-ease:cubic-bezier(.22,.75,.22,1)}
+
+.movie-disc-art{position:relative;display:block;inline-size:100%;aspect-ratio:1;block-size:auto;isolation:isolate;overflow:hidden;border-radius:50%;background:#364a3c;box-shadow:inset 0 0 0 1px #f4f5ef,0 2px 3px #28332120;transform:rotate(0deg);transition:transform 650ms var(--disc-ease)}
+
+.movie-disc-label{position:absolute;inset:2%;display:block;border-radius:50%;overflow:hidden;mask-image:radial-gradient(circle,transparent 0 5.5%,#000 6%);background:#cbd4c4}
+
+.movie-disc-label img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:none!important;transition:none!important}
+
+.movie-disc-label .art-fallback{display:grid;place-items:center;position:absolute;inset:0;min-height:100%;padding:20%;font-size:clamp(8px,1vw,15px);color:#edf0e7;background:linear-gradient(135deg,#9daa90,#344b3c);text-align:center}
+
+.movie-disc-grooves{position:absolute;inset:0;border-radius:50%;pointer-events:none;opacity:.18;background:repeating-radial-gradient(circle,transparent 0 2px,#edf1e933 2.2px 2.6px,transparent 2.8px 4px);box-shadow:inset 0 0 0 1px #a1a9a5,inset 0 0 0 3px #d6dcd7,inset 0 0 0 4px #7f8b81}
+
+.movie-disc-sheen{position:absolute;inset:-10%;pointer-events:none;background:linear-gradient(115deg,transparent 25%,#ffffff14 43%,#ffffff38 48%,transparent 62%);transform:translateX(-48%);transition:transform 800ms var(--disc-ease)}
+
+.movie-disc-centre{position:absolute;inset:50% auto auto 50%;width:18%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#f1f1ed 0 33%,#e0e4df 35% 44%,#a7b2b4 46% 56%,#77838a 58% 65%,#c5cecc 67% 79%,#818d8d 81% 88%,#c2c9c6 90%);box-shadow:0 0 0 1px #ffffff80;pointer-events:none}
+
+
+
+/* Square footprints keep the entire disc visible; copy and controls remain outside. */
+
+.poster,.section .poster,.movie-grid .poster,.movie-rail .poster,.rail-viewport .poster,.movie-page-poster,.diary-poster,.auth-poster,.wall-frame,.wall-search-film .poster,.autocomplete-poster,.pip-film-art{aspect-ratio:1!important;height:auto!important;border-radius:50%!important;overflow:hidden;background:transparent}
+
+.poster:not(.skeleton):not(.discover-more-card){padding:0;border:0;box-shadow:none}
+
+.poster>.movie-disc-art,.wall-frame>.movie-disc-art,.auth-poster>.movie-disc-art{width:100%}
+
+.movie-rail .movie-grid>article{width:200px;flex-basis:200px}.rail-viewport{padding-top:12px;padding-bottom:18px;scroll-padding-inline:8px}.rail-arrow{top:80px;border-radius:50%!important;height:40px;width:40px;font-size:27px;box-shadow:0 4px 15px #23341d15}.card-info{padding-top:16px}.card-index{left:12%;top:13%;z-index:2;font-size:8px;background:#f1f1eddb;min-width:20px;text-align:center}.poster-hover-hint{inset:auto 15% 15%!important;border-radius:20px!important;padding:7px 10px!important;font:9px Arial,sans-serif!important;justify-content:center!important;backdrop-filter:blur(6px)}
+
+.discover-more-card{padding:20px!important;gap:10px!important;box-shadow:inset 0 0 0 4px #f1f1ed,inset 0 0 0 5px #a7b59b;transition:transform 500ms var(--disc-ease)}.discover-more-card strong{font-size:23px}.discover-more-card>span:last-child{font-size:10px}.discover-arrow{font-size:27px}
+
+.movie-page-poster{align-self:start;box-shadow:none!important;filter:drop-shadow(0 7px 8px #25351e25)}.diary-poster{align-self:start;flex-shrink:0}.diary-entry{align-items:start}.list-movies .diary-entry{align-items:center}.watchlist-list-layout .movie-grid>article{align-items:center}.watchlist-list-layout .movie-grid>article>.poster{aspect-ratio:1!important;height:auto!important}
+
+.auth-poster{border:0;box-shadow:0 7px 10px #24351a28}.auth-poster-stack{height:220px}.auth-poster .movie-disc-art{transform:none}.auth-poster-0{transform:rotate(-12deg) translateY(18px)}.auth-poster-1{transform:rotate(-4deg)}.auth-poster-2{transform:rotate(5deg) translateY(5px)}.auth-poster-3{transform:rotate(13deg) translateY(23px)}
+
+.favorite-wall{background:#e3e8da;border-bottom:1px solid #afbc9f;box-shadow:none}.wall-heading h2{color:#283d21}.wall-heading p:last-child,.wall-heading .eyebrow{color:#687b58}.wall-frames{gap:clamp(12px,3vw,45px);padding:12px 0}.wall-frame{padding:0;border:0!important;background:transparent;box-shadow:none!important;transition:transform 550ms var(--disc-ease)}.wall-frame:after{display:none}.wall-frame .frame-empty{position:relative;display:flex;aspect-ratio:1;border-radius:50%;border:1px dashed #8a9e78;background:radial-gradient(circle,#f1f1ed 0 8%,#b8c5aa 8.5% 11%,#d4ddca 11.5% 14%,#e5eadf 14.5%);color:#647a53}.frame-empty>span:first-child{color:#667f52}.frame-plaque{border:0;background:none;box-shadow:none;color:#3e5630;font-size:12px;padding:0;line-height:1.4}.wall-search-film{background:#e4eadc;border-color:#afbf9f;border-radius:0;color:#344d29;align-items:center}.wall-search-film>span>span{color:#647c54}.wall-picker{background:#f1f1ed;color:#2d4423;border-color:#9cae8c;border-radius:0}.wall-piece{gap:12px}
+
+.autocomplete-poster{width:38px;height:38px!important}.autocomplete-panel{background:#f1f1ed;border-color:#a7b998;border-radius:3px;box-shadow:0 12px 35px #2a401f20}.autocomplete-option{color:#304929;border-bottom-color:#a9b89a40;min-height:58px}.autocomplete-option span{color:#687b5b}.autocomplete-option[aria-selected=true]{background:#dfe8d3}.autocomplete-status{color:#647b54!important}.pip-film{grid-template-columns:40px minmax(0,1fr) 12px}.pip-film-art{width:40px;height:40px!important}.pip-film-art .art-fallback,.autocomplete-poster .art-fallback{font-size:5px!important;padding:15%}.pip-companion{bottom:70px}
+
+.poster.skeleton{border-radius:50%!important;background:linear-gradient(115deg,#d9e1d0 25%,#ecf0e6 45%,#d9e1d0 65%);background-size:200% 100%;animation:disc-loading 2s ease-in-out infinite}
+
+
+
+/* A single transform supplies each hover: no orange glow or nested zoom. */
+
+.movie-grid>article:hover>.poster,.movie-grid>article:focus-within>.poster,.home-collections .movie-grid article:hover .poster,.wall-frame:enabled:hover{transform:none;box-shadow:none!important;filter:none}
+
+.movie-grid>article>.poster{transition:none}.movie-disc-art img{animation:none}.save-button{transition:opacity 200ms,transform 300ms var(--disc-ease),background-color 180ms}.saved-check{transition:transform 300ms var(--disc-ease)}
+
+@media(hover:hover) and (pointer:fine){.poster:hover .movie-disc-art,.poster:focus-visible .movie-disc-art,.wall-frame:enabled:hover .movie-disc-art,.wall-frame:focus-visible .movie-disc-art{transform:rotate(-8deg)}.poster:hover .movie-disc-sheen,.wall-frame:hover .movie-disc-sheen{transform:translateX(48%)}.discover-more-card:hover{transform:rotate(-3deg)!important}.movie-grid>article .save-button{opacity:1;transform:none}.poster:active .movie-disc-art{transform:rotate(-4deg) scale(.98)}}
+
+@keyframes disc-loading{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+
+@media(max-width:700px){.movie-rail .movie-grid>article{width:156px;flex-basis:156px}.rail-arrow{top:60px}.movie-rail .movie-grid{gap:18px}.card-info{padding-top:12px}.card-index{font-size:7px;padding:3px 5px}.poster-hover-hint{display:none}.wall-frames{gap:10px}.frame-plaque{font-size:9px}.auth-poster-stack{height:180px}.pip-companion{bottom:75px}.movie-disc-centre{width:20%}}
+
+@media(prefers-reduced-motion:reduce){.movie-disc-art,.movie-disc-sheen,.wall-frame,.discover-more-card{transition:none!important;transform:none!important}.poster.skeleton{animation:none!important}.movie-disc-art img{animation:none!important}}
+
+
+
+.card-index{border-radius:50%;height:20px;width:20px;padding:0;display:grid;place-items:center}.poster>.poster-hover-hint{max-width:70%}
+
+.frame-navbar[data-view=discover].navbar-scrolled{background:#f1f1edf5;backdrop-filter:blur(10px)}
+
+
+
+/* Reference-inspired ink outline. The shell reserves a stable, unclipped hit area. */
+
+.movie-disc-shell{position:relative;display:block;width:100%;aspect-ratio:1;isolation:isolate;overflow:visible}
+
+.poster:has(.movie-disc-shell),.section .poster:has(.movie-disc-shell),.movie-grid .poster:has(.movie-disc-shell),.movie-rail .poster:has(.movie-disc-shell),.rail-viewport .poster:has(.movie-disc-shell),.wall-frame,.auth-poster:has(.movie-disc-shell){overflow:visible}
+
+.disc-hover-sketch{position:absolute;inset:-10%;width:120%;height:120%;overflow:visible;pointer-events:none;z-index:3;opacity:0;transition:opacity 220ms ease}
+
+.disc-hover-sketch path{stroke:#1d241b;stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 420ms cubic-bezier(.4,0,.6,1)}
+
+.disc-hover-sketch path+path{stroke-width:1.1;opacity:.78}
+
+@media(hover:hover) and (pointer:fine){
+
+ .movie-disc-shell:hover>.disc-hover-sketch,.poster:focus-visible .disc-hover-sketch,.wall-frame:focus-visible .disc-hover-sketch,.film-disc:hover>.disc-hover-sketch,.film-disc:focus-visible>.disc-hover-sketch{opacity:1}
+
+ .movie-disc-shell:hover>.disc-hover-sketch path,.poster:focus-visible .disc-hover-sketch path,.wall-frame:focus-visible .disc-hover-sketch path,.film-disc:hover>.disc-hover-sketch path,.film-disc:focus-visible>.disc-hover-sketch path{stroke-dashoffset:0;transition-duration:950ms;transition-timing-function:cubic-bezier(.2,.7,.25,1)}
+
+ .movie-disc-shell:hover>.disc-hover-sketch path+path,.film-disc:hover>.disc-hover-sketch path+path{transition-delay:110ms}
+
+ .poster:hover .movie-disc-art,.poster:focus-visible .movie-disc-art,.wall-frame:enabled:hover .movie-disc-art,.wall-frame:focus-visible .movie-disc-art{transform:rotate(-2deg) scale(1.015)}
+
+ .poster:active .movie-disc-art{transform:rotate(-1deg) scale(.99)}
+
+}
+
+/* Focus highlights work on keyboards even when the device has no hover capability. */
+
+.poster:focus-visible .disc-hover-sketch,.wall-frame:focus-visible .disc-hover-sketch,.film-disc:focus-visible>.disc-hover-sketch{opacity:1}
+
+.poster:focus-visible .disc-hover-sketch path,.wall-frame:focus-visible .disc-hover-sketch path,.film-disc:focus-visible>.disc-hover-sketch path{stroke-dashoffset:0}
+
+.film-disc>.disc-hover-sketch{inset:-8%;width:116%;height:116%}.film-disc:hover{filter:none}
+
+@media(prefers-reduced-motion:reduce){.disc-hover-sketch,.disc-hover-sketch path{transition:none!important}.movie-disc-shell:hover .movie-disc-art,.poster:hover .movie-disc-art,.wall-frame:hover .movie-disc-art{transform:none!important}}
+
+.autocomplete-poster:has(.movie-disc-shell),.pip-film-art:has(.movie-disc-shell){overflow:visible}

@@ -12,6 +12,7 @@ urlpatterns=[
  path('api/account',a.account),path('api/account/password',a.change_password),path('api/account/recovery-email',a.recovery_email),path('api/account/verification/send',a.resend),path('api/auth/email/verify',a.verify_email),path('api/auth/password-reset/request',a.request_reset),path('api/auth/password-reset/confirm',a.confirm_reset),
  path('api/profiles/me',a.edit_profile),
  path('api/movies/trending',m.collection,{'kind':'trending'}),path('api/movies/popular',m.collection,{'kind':'popular'}),path('api/movies/top-rated',m.collection,{'kind':'top-rated'}),path('api/movies/country',m.collection,{'kind':'country'}),path('api/movies/search',m.search),path('api/movies/<int:movie_id>',m.detail),path('api/movies/<int:movie_id>/watch-providers',m.providers),path('api/movies/<int:movie_id>/reviews',j.reviews),path('api/artwork/tmdb/<str:size>/<str:filename>',m.artwork),
+ path('api/people/<int:person_id>',m.person),
  path('api/watchlist',j.watchlist),path('api/watchlist/<int:movie_id>',j.remove_watchlist),path('api/diary',j.diary),path('api/diary/<int:entry_id>',j.diary_entry),
  path('api/lists',l.lists),path('api/lists/<int:list_id>',l.detail),path('api/lists/<int:list_id>/movies',l.add_movie),path('api/lists/<int:list_id>/movies/<int:movie_id>',l.list_movie),
  path('api/reviews/<int:review_id>/reactions',s.reactions),path('api/reviews/<int:review_id>/like',s.like),path('api/reviews/<int:review_id>/comments',s.comments),path('api/reviews/<int:review_id>/comments/<int:comment_id>',s.delete_comment),
